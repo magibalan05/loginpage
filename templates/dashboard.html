@@ -1,0 +1,15 @@
+{% extends "layout.html" %}
+{% block title %}Dashboard{% endblock %}
+{% block content %}
+    <h1>Dashboard</h1>
+    {% for post in posts %}
+        <div class="post">
+            <h2>{{ post.title }}</h2>
+            <p>{{ post.content }}</p>
+            <p>Likes: {{ post.likes }}</p>
+            <form action="{{ url_for('like_post', post_id=post.id) }}" method="POST">
+                <input type="submit" value="Like">
+            </form>
+        </div>
+    {% endfor %}
+{% endblock %}
